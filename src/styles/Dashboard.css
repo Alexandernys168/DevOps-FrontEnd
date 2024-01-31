@@ -1,0 +1,18 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.dashboard-header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.dashboard-content {
+    flex: 1;
+    padding: 1rem;
+    background-color: #f4f4f4;
+}

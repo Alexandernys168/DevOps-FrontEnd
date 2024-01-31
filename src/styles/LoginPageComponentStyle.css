@@ -1,0 +1,103 @@
+/* styles.css */
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.inner-body-page{
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 3rem; /* 48px / 16px */
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    line-height: 150%;
+}
+
+.container {
+    max-width: 25rem; /* 400px / 16px */
+    margin: 3.125rem auto; /* 50px / 16px */
+    background-color: #fff;
+    padding: 1.25rem; /* 20px / 16px */
+    border-radius: 0.5rem; /* 8px / 16px */
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1); /* 10px / 16px */
+}
+
+.text-center {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem; /* 8px / 16px */
+}
+
+input {
+    width: 100%;
+    padding: 0.625rem; /* 10px / 16px */
+    margin-bottom: 1rem; /* 16px / 16px */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem; /* 4px / 16px */
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+    border-color: #d53636;
+}
+
+button {
+    background-color: #d53636;
+    color: #fff;
+    padding: 0.75rem 0.9375rem; /* 12px / 16px, 15px / 16px */
+    border: none;
+    border-radius: 0.75rem; /* 12px / 16px */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a12c2c;
+}
+
+.link-button {
+    text-align: center;
+    margin-top: 1.25rem; /* 20px / 16px */
+}
+
+.link-button a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.link-button a:hover {
+    color: #d53636;
+}
+
+textarea {
+    width: 100%;
+    padding: 0.625rem; /* 10px / 16px */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem; /* 4px / 16px */
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+    resize: vertical;
+}
+
+textarea:focus {
+    border-color: #d53636;
+}

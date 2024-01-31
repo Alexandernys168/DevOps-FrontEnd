@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Helmet } from 'react-helmet'
 
-import './not-found.css'
+import '../styles/not-found.css'
 
 const NotFound = (props) => {
   return (

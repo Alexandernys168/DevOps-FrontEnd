@@ -1,18 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 
 import { Helmet } from 'react-helmet'
 
 import FeatureCard from '../components/feature-card'
 import Question1 from '../components/question1'
-import './home.css'
+import '../styles/home.css'
 
 const Home = (props) => {
   return (
     <div className="home-container">
       <Helmet>
-        <title>Nautical Frank Mole</title>
+        <title>PATIENTSYS-DevOps</title>
         <meta property="og:title" content="Nautical Frank Mole" />
       </Helmet>
+      {/*
       <div className="home-header">
         <header
           data-thq="thq-navbar"
@@ -21,11 +24,12 @@ const Home = (props) => {
           <span className="logo">PATIENTSYS</span>
           <div data-thq="thq-navbar-nav" className="home-desktop-menu">
             <nav className="home-links">
-              <span className="home-nav12 bodySmall">Home</span>
-              <span className="home-nav2 bodySmall">Patients</span>
-              <span className="home-nav3 bodySmall">Data Management</span>
-              <span className="home-nav4 bodySmall">Reports</span>
-              <span className="home-nav5 bodySmall">Support</span>
+              <Link to="/" className="buttonFlat">Home</Link>
+              <Link to="/users" className="buttonFlat">Users</Link>
+              <Link to="/health-events" className="buttonFlat">Health Events</Link>
+              <Link to="/profile" className="buttonFlat">Profile</Link>
+              <Link to="/swagger-api" className="buttonFlat">Swagger API</Link>
+              <Link to="/dashboard" className="buttonFlat">Dashboard</Link>
             </nav>
             <div className="home-buttons">
               <button className="home-login buttonFlat">Login</button>
@@ -54,11 +58,12 @@ const Home = (props) => {
                 </div>
               </div>
               <nav className="home-links1">
-                <span>Home</span>
-                <span className="home-nav21 bodySmall">Patients</span>
-                <span className="home-nav31 bodySmall">Data Management</span>
-                <span className="home-nav41 bodySmall">Reports</span>
-                <span className="home-nav51 bodySmall">Support</span>
+                <Link to="/" className="buttonFlat">Home</Link>
+                <Link to="/users" className="buttonFlat">Users</Link>
+                <Link to="/health-events" className="buttonFlat">Health Events</Link>
+                <Link to="/profile" className="buttonFlat">Profile</Link>
+                <Link to="/swagger-api" className="buttonFlat">Swagger API</Link>
+                <Link to="/dashboard" className="buttonFlat">Dashboard</Link>
               </nav>
               <div className="home-buttons1">
                 <button className="buttonFlat">Login</button>
@@ -88,6 +93,7 @@ const Home = (props) => {
           </div>
         </header>
       </div>
+*/}
       <div className="home-hero">
         <div className="heroContainer home-hero1">
           <div className="home-container1">
@@ -263,8 +269,6 @@ const Home = (props) => {
           </div>
         </div>
       </div>
-      <div className="home-pricing"></div>
-      <div className="home-banner"></div>
       <div className="home-faq">
         <div className="faqContainer">
           <div className="home-faq1">
@@ -310,12 +314,13 @@ const Home = (props) => {
         <footer className="footerContainer home-footer1">
           <div className="home-container6">
             <span className="logo">PATIENTSYS</span>
-            <nav className="home-nav1 bodySmall home-nav1">
-              <span className="home-nav11 bodySmall">Home</span>
-              <span className="home-nav22 bodySmall">Patients</span>
-              <span className="home-nav32 bodySmall">Data Management</span>
-              <span className="home-nav42 bodySmall">Reports</span>
-              <span className="home-nav52 bodySmall">Support</span>
+            <nav className="home-links">
+              <Link to="/" className="buttonFlat">Home</Link>
+              <Link to="/users" className="buttonFlat">Users</Link>
+              <Link to="/health-events" className="buttonFlat">Health Events</Link>
+              <Link to="/profile" className="buttonFlat">Profile</Link>
+              <Link to="/swagger-api" className="buttonFlat">Swagger API</Link>
+              <Link to="/dashboard" className="buttonFlat">Dashboard</Link>
             </nav>
           </div>
           <div className="home-separator"></div>
