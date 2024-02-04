@@ -55,7 +55,7 @@ const LoginPageComponent = () => {
                 <button>Go back to the homepage</button>
             </Link>
             <h1 className="text-center">Login</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="login-form" onSubmit={handleSubmit}>
                 <div>
                     <label>
                         Username:
