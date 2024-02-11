@@ -1,0 +1,191 @@
+  .expandable-events-row {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    /* Set a fixed width for the left column and let the right column take up the rest of the space */
+    align-items: center;
+    /* Center the content vertically */
+
+  }
+
+  .left-column {
+    justify-content: center;
+    display: flex;
+  }
+
+  .right-column {
+    width: 50%;
+    padding-left: 15px;
+    border-left: 1px solid lightgrey;
+  }
+
+
+  .expandable-events-row p {
+    margin: 5px 0;
+  }
+
+  .expandable-events-row button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .expandable-events-row button:hover {
+    background-color: #3e8e41;
+  }
+
+  .table-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 1rem;
+  }
+
+  
+
+  .inner-table-container{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+
+  /* Target that stupid upper left corner
+  */
+  .inner-table-container .rdt_TableHeadRow  { 
+    border-bottom: 3px solid #f9f9f9;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+  
+  
+ /* Target the last child of the table header 
+ .inner-table-container .rdt_TableCol:last-child {
+    border-top-right-radius: 10px;
+
+  }*/
+  
+
+
+  /* Target the table header */
+  
+/*
+.inner-table-container .rdt_TableCol_Sortable {
+    background-color: #93f3b5;
+  }
+*/
+/* Target the table rows */
+
+.inner-table-container .rdt_TableRow {
+    border-bottom:2px solid #f9f9f9
+  }
+  
+  .table-container .rdt_Pagination {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+  }
+
+  .table-container .table-type {
+    font-size: large;
+    font-weight: 400;
+    padding-bottom: 20px;
+  }
+
+  .table-container .invoice-overview {
+    padding-bottom: 40px;
+  }
+
+  .table-container .invoice-overview h1{
+    font-size: x-large;
+    font-weight: 700;
+  }
+
+  .statistics-container {
+    display: flex;
+  }
+  
+  .statistics-box {
+    position: relative; /* Add position relative */
+    width: 250px;
+    height: 100px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  .statistics-box p, .statistics-box-last p {
+    font-size: x-large;
+    font-weight: 700;
+  }
+
+  .statistics-box-last {
+    position: relative; /* Add position relative */
+    width: 250px;
+    height: 100px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  .statistics-box span, .statistics-box-last span {
+    position: absolute; /* Add position absolute */
+    top: 20px; /* Move up 15px */
+    right: 15px; /* Move right 15px */
+    border: 2px solid #f9f9f9;
+    font-size: x-large; /* Increase font size */
+    color: #fff; /* Set font color */
+    width: 50px; /* Set width */
+    height: 50px; /* Set height */
+    border-radius:  50%; /* Make it a circle */
+    text-align: center; /* Center the symbol */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
+
+  /* Target the selected rows */
+  /*
+  .inner-table-container .rdt_TableCol_Sortable:hover {
+    background-color: #6d9bd2;
+  }
+  */
+
+  
+  /*
+  .inner-table-container [data-column-id="8"].rdt_TableCell {
+    column-width: 50px;
+    column-rule-width: 50px; 
+    background-color: aquamarine;
+  }
+  */
+  /*
+  .inner-table-container [data-column-id="2"][data-row-id="done"].rdt_TableCell {
+    background-color: green; 
+  }  
+  .inner-table-container [data-row-status="cancelled"].rdt_TableCell {
+    background-color: red; 
+  } 
+*/
+
+
+  
+
+
+ 
+
+
+  /*
+.rdt_TableRow: This is a row in the table body. vvvvvv
+.rdt_TableCell: This is a cell in a table row. vvvvv
+.rdt_TableCol: This is a column in the table. vvvv
+.rdt_TableCol_Sortable: This is a sortable column in the table. vvv
+.rdt_TableCol_Sortable:hover: This is a sortable column 
+in the table when the mouse is hovering over it. vvvv
+*/

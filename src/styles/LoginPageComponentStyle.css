@@ -18,8 +18,24 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.width-of-input{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Optional, for centering text within input container */
 
 }
+.width-of-input input{
+    margin: 1rem;
+}
+.width-of-input button {
+    margin-bottom: 1rem;
+}
+
 
 h1 {
     font-size: 3rem; /* 48px / 16px */

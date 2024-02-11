@@ -15,13 +15,14 @@ const Header: React.FC = () => {
                         <Link to="/" className="buttonFlat">Home</Link>
                         <Link to="/users" className="buttonFlat">Users</Link>
                         <Link to="/health-events" className="buttonFlat">Health Events</Link>
-                        <Link to="/profile" className="buttonFlat">Profile</Link>
+                        <Link to="/populate" className="buttonFlat">Populate</Link>
                         <Link to="/swagger-api" className="buttonFlat">Swagger API</Link>
                         <Link to="/dashboard" className="buttonFlat">Dashboard</Link>
                     </nav>
                     <div className="home-buttons">
                         <Link to="/login" className="home-login buttonFlat">Login</Link>
-                        <button className="buttonFilled">Register</button>
+                        <Link to="/register" className="buttonFilled">Register</Link>
+
                     </div>
                 </div>
                 <div data-thq="thq-burger-menu" className="home-burger-menu">
@@ -49,13 +50,13 @@ const Header: React.FC = () => {
                             <Link to="/" className="buttonFlat">Home</Link>
                             <Link to="/users" className="buttonFlat">Users</Link>
                             <Link to="/health-events" className="buttonFlat">Health Events</Link>
-                            <Link to="/profile" className="buttonFlat">Profile</Link>
+                            <Link to="/populate" className="buttonFlat">Populate</Link>
                             <Link to="/swagger-api" className="buttonFlat">Swagger API</Link>
                             <Link to="/dashboard" className="buttonFlat">Dashboard</Link>
                         </nav>
                         <div className="home-buttons1">
-                            <button className="buttonFlat">Login</button>
-                            <button className="buttonFilled">Register</button>
+                            <Link to="/login" className="home-login buttonFlat">Login</Link>
+                            <Link to="/register" className="buttonFilled">Register</Link>
                         </div>
                     </div>
                     <div>
