@@ -5,13 +5,12 @@ import '../styles/DataTable.css'
 import '../styles/expandable-events-row.css'
 
 
-
 interface Event {
     id: string;
     patientId: string;
-    result: string;
+    Result: string;
+    registeredAt: number;
 
-    // Add other properties as needed
 }
 
 
@@ -22,7 +21,7 @@ const EventList: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8082/allevents');
+                const response = await fetch('http://localhost:8082/labresult/allevents');
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
@@ -38,8 +37,7 @@ const EventList: React.FC = () => {
                 const parsedData = rawData.map((str, index) => {
                     try {
                         // Parse the raw string and then parse the inner JSON
-                        const innerJson = JSON.parse(JSON.parse(str));
-                        return innerJson;
+                        return JSON.parse(str);
                     } catch (parseError) {
                         if (parseError instanceof Error)
                             console.error(`Error parsing JSON at index ${index}:`, parseError.message);
@@ -47,7 +45,6 @@ const EventList: React.FC = () => {
                         return null; // or handle the error as needed
                     }
                 }).filter(item => item !== null);
-
                 setEvents(parsedData);
             } catch (error) {
                 if (error instanceof Error)
@@ -72,7 +69,17 @@ const EventList: React.FC = () => {
         },
         {
             name: 'Result',
-            selector: (row) => row.result,
+            selector: (row) => row.Result,
+            sortable: true,
+        },
+        {
+            name: 'Registered At',
+            selector: (row) => {
+                console.log('Timestamp:', row.registeredAt);
+                const date = new Date(row.registeredAt);
+                console.log('Date object:', date);
+                return `${date.toISOString().slice(0, 10)}`;
+            },
             sortable: true,
         },
         {
@@ -100,7 +107,7 @@ const EventList: React.FC = () => {
                     className="inner-events-table-container"
                     title="Events"
                     columns={columns}
-                    data={events}
+                    data={events as any[]}
                     pagination
                     responsive
                     highlightOnHover

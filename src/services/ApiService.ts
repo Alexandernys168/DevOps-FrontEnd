@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:8082/addlabresults'; // Change this URL to your actual API endpoint
+const apiUrl = 'http://localhost:8082/labresult/register'; // Change this URL to your actual API endpoint
 
 export const sendEventToApi = async (event: any) => {
     try {

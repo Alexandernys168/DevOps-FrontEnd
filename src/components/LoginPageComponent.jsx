@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { setUserInfoCookie } from '../services/CookieService';
 import axios from 'axios';
+import { authenticateUser } from '../authentication/auth';
 
 import '../styles/LoginPageComponentStyle.css'
 
@@ -20,7 +21,7 @@ const LoginPageComponent = () => {
             [name]: value,
         });
     };
-
+/*
     const handleSubmit = async (formSubmitEvent) => {
         formSubmitEvent.preventDefault();
 
@@ -48,6 +49,29 @@ const LoginPageComponent = () => {
             console.error('Axios error:', error);
         }
     };
+
+ */
+
+    const handleSubmit = async (formSubmitEvent) => {
+        formSubmitEvent.preventDefault();
+
+        try {
+            // Call the authenticateUser function with email and password
+            const user = await authenticateUser(
+                createdUserObject.username,
+                createdUserObject.password
+            );
+
+            // If authentication is successful, set user info cookie and navigate
+            if (user) {
+                setUserInfoCookie(createdUserObject.username, createdUserObject.role);
+                navigate('/');
+            }
+        } catch (error) {
+            console.error('Authentication error:', error);
+        }
+    };
+
 
     return (
         <div className="inner-body-page">

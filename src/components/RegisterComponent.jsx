@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { registerUser } from '../authentication/auth';
 import axios from 'axios';
 
 import '../styles/LoginPageComponentStyle.css';
+import {setUserInfoCookie} from "../services/CookieService";
 
 const RegisterComponent = () => {
     const [registrationInfo, setRegistrationInfo] = useState({
@@ -23,7 +25,7 @@ const RegisterComponent = () => {
     const handleConfirmPasswordChange = (event) => {
         setConfirmPassword(event.target.value);
     };
-
+/*
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (registrationInfo.password !== confirmPassword) {
@@ -42,6 +44,33 @@ const RegisterComponent = () => {
             console.error('Registration error:', error);
         }
     };
+ */
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (registrationInfo.password !== confirmPassword) {
+            alert("Passwords don't match");
+            return;
+        }
+
+        try {
+            // Call the registerUser function with email and password
+            const user = await registerUser(
+                registrationInfo.username,
+                registrationInfo.password
+            );
+            console.log("User is: " + user);
+
+            // If registration is successful, set user info cookie and navigate
+            if (user) {
+                console.log("User was registered");
+                setUserInfoCookie(registrationInfo.username, 'user'); // You may set an initial role for the user
+                navigate('/');
+            }
+        } catch (error) {
+            console.error('Registration error:', error);
+        }
+    };
+
 
     return (
         <div className="inner-body-page">
