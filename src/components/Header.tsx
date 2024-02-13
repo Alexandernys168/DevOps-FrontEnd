@@ -1,13 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/home.css'; // Import the corresponding CSS file
+import { Link, useNavigate } from 'react-router-dom';
+import '../styles/home.css';
+import logoutIcon from "../icons/logout-icon";
+import {signOutUser} from "../authentication/auth";
+import SignOutIcon from "../icons/logout-icon"; // Import the corresponding CSS file
 
 const Header: React.FC = () => {
+    const navigate = useNavigate();
+    const handleSignOut = async () => {
+        try {
+            await signOutUser();
+            navigate("/");
+        } catch (error) {
+            if(error instanceof Error)
+                console.error('Sign out failed:', error.message);
+            // Handle sign-out failure if needed
+        }
+    };
     return (
         <div className="home-header">
             <header
                 data-thq="thq-navbar"
-                className="navbarContainer home-navbar-interactive"
+                className="navbarContainer home-navbar-interactive" style={{ paddingLeft: '20px', paddingRight: '20px' }}
             >
                 <span className="logo">PATIENTSYS</span>
                 <div data-thq="thq-navbar-nav" className="home-desktop-menu">
@@ -16,13 +30,14 @@ const Header: React.FC = () => {
                         <Link to="/users" className="buttonFlat">Users</Link>
                         <Link to="/health-events" className="buttonFlat">Health Events</Link>
                         <Link to="/populate" className="buttonFlat">Populate</Link>
-                        <Link to="/swagger-api" className="buttonFlat">Swagger API</Link>
                         <Link to="/dashboard" className="buttonFlat">Dashboard</Link>
                     </nav>
                     <div className="home-buttons">
                         <Link to="/login" className="home-login buttonFlat">Login</Link>
                         <Link to="/register" className="buttonFilled">Register</Link>
-
+                        <button onClick={handleSignOut} className="buttonFlat" style={{marginLeft: '10px', height: '36px'}}>
+                            <SignOutIcon/>
+                        </button>
                     </div>
                 </div>
                 <div data-thq="thq-burger-menu" className="home-burger-menu">
@@ -51,16 +66,11 @@ const Header: React.FC = () => {
                             <Link to="/users" className="buttonFlat">Users</Link>
                             <Link to="/health-events" className="buttonFlat">Health Events</Link>
                             <Link to="/populate" className="buttonFlat">Populate</Link>
-                            <Link to="/swagger-api" className="buttonFlat">Swagger API</Link>
                             <Link to="/dashboard" className="buttonFlat">Dashboard</Link>
                         </nav>
-                        <div className="home-buttons1">
-                            <Link to="/login" className="home-login buttonFlat">Login</Link>
-                            <Link to="/register" className="buttonFilled">Register</Link>
-                        </div>
                     </div>
                     <div>
-                        <svg
+                    <svg
                             viewBox="0 0 950.8571428571428 1024"
                             className="home-icon04 socialIcons"
                         >

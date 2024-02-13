@@ -16,6 +16,14 @@ import LoginPageComponent from './components/LoginPageComponent';
 import HealthEvents from "./views/HealthEvents";
 import RegisterComponent from "./components/RegisterComponent";
 import DataGenerationPage from "./views/DataGenerationPage";
+import './authentication/firebase'
+import { setupAuthStateObserver } from './authentication/auth';
+import {AuthenticatedRoute} from "./authentication/authenticadedRoute";
+
+
+
+// Set up the authentication state observer
+setupAuthStateObserver();
 
 const App: React.FC = () => {
     return (
@@ -24,14 +32,20 @@ const App: React.FC = () => {
                 <Header />
                 <div style={{ paddingTop: '96px' }}>
                     <Routes>
-                        <Route element={<Home />} path="/" />
-                        <Route element={<HealthEvents/>} path="/health-events" />
-                        <Route element={<Dashboard />} path="/dashboard" />
-                        <Route element={<LoginPageComponent />} path="/login" />
-                        <Route element={<RegisterComponent/>} path="/register" />
-                        <Route element={<DataGenerationPage/>} path="/populate"/>
+                        <Route path="/" element={<Home />}  />
+                        <Route path="/health-events" element={<AuthenticatedRoute/>}>
+                            <Route path="/health-events" element={<HealthEvents/>}/>
+                        </Route>
+                        <Route path="/dashboard" element={<AuthenticatedRoute/>}>
+                            <Route path="/dashboard" element={<Dashboard/>}/>
+                        </Route>
+                        <Route path="/login" element={<LoginPageComponent />}  />
+                        <Route path="/register" element={<RegisterComponent/>}  />
+                        <Route path="/populate" element={<AuthenticatedRoute/>}>
+                            <Route path="/populate" element={<DataGenerationPage/>}/>
+                        </Route>
                         {/* Route for NotFound - matches any unknown route */}
-                        <Route element={<NotFound />} path ="*" />
+                        <Route path ="*" element={<NotFound />}  />
                     </Routes>
                 </div>
             </div>
