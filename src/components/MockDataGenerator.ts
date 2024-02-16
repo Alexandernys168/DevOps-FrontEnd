@@ -3,7 +3,7 @@ import {Faker, faker} from '@faker-js/faker';
 interface Event {
     id: string;
     patientId: string;
-    result: string;
+    Result: string;
     registeredAt: number;
 }
 
@@ -11,7 +11,7 @@ interface Event {
 export const generateMockEvent = (): Event => ({
     id: faker.string.uuid(),
     patientId: faker.person.firstName(),
-    result: faker.helpers.arrayElement(['positive', 'negative']),
+    Result: faker.helpers.arrayElement(['positive', 'negative']),
     registeredAt: faker.date.between({from: '2020-01-01T00:00:00.000Z', to: '2024-03-01T00:00:00.000Z'}).getTime()
 });
 
