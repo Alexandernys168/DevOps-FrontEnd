@@ -8,7 +8,7 @@ import '../styles/expandable-events-row.css'
 interface Event {
     id: string;
     patientId: string;
-    Result: string;
+    result: string;
     registeredAt: number;
 
 }
@@ -69,7 +69,7 @@ const EventList: React.FC = () => {
         },
         {
             name: 'Result',
-            selector: (row) => row.Result,
+            selector: (row) => row.result,
             sortable: true,
         },
         {
