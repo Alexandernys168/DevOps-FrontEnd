@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7823b07-a54e-42c8-b2fc-f7fae1afd498" name="Changes" comment="trying with gitignore">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MockDataGenerator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MockDataGenerator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.js" afterDir="false" />
-    </list>
+    <list default="true" id="f7823b07-a54e-42c8-b2fc-f7fae1afd498" name="Changes" comment="trying with gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +101,7 @@
       <workItem from="1707686300785" duration="6920000" />
       <workItem from="1707736668656" duration="4759000" />
       <workItem from="1707742342891" duration="4347000" />
-      <workItem from="1708080262319" duration="9290000" />
+      <workItem from="1708080262319" duration="9599000" />
     </task>
     <task id="LOCAL-00001" summary="added bunch of good stuff">
       <option name="closed" value="true" />

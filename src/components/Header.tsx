@@ -7,18 +7,23 @@ import SignOutIcon from "../icons/logout-icon"; // Import the corresponding CSS 
 import {UserProfileLoggedInIcon} from "../icons/userProfileLoggedIn-icon";
 
 const Header: React.FC = () => {
-    const { loading } = useAuthState();
+    const { loading, user } = useAuthState();
     const [currentUser, setCurrentUser] = useState<any>(null);
     const navigate = useNavigate();
     useEffect(() => {
         const fetchCurrentUser = async () => {
             try {
-                // Fetch the current user once
-                const user = auth.currentUser;
-                setCurrentUser(user);
-                console.log('Current user:', user);
+                if (user) {
+                    // If user is available from useAuthState, use it directly
+                    setCurrentUser(user);
+                } else {
+                    // Fetch the current user once if not available
+                    const currentUser = auth.currentUser;
+                    setCurrentUser(currentUser);
+                    console.log('Current user:', currentUser);
 
-                // Additional logic if needed
+                    // Additional logic if needed
+                }
             } catch (error) {
                 if(error instanceof Error)
                 console.error('Error fetching current user:', error.message);
@@ -30,7 +35,7 @@ const Header: React.FC = () => {
             // Only fetch the current user if authentication state is loaded
             fetchCurrentUser();
         }
-    }, [loading]);
+    }, [loading, user]);
     const handleSignOut = async () => {
         try {
             await signOutUser();
