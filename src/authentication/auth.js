@@ -78,17 +78,41 @@ export const setupAuthStateObserver = () => {
 export const useAuthState = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [userRoles, setUserRoles] = useState([]);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
             setUser(user);
             setLoading(false);
+
+            if (user) {
+                // Fetch user roles from Firestore based on user UID
+                try {
+                    const userDocRef = doc(firestore, 'users', user.uid);
+                    const docSnapshot = await getDoc(userDocRef);
+
+                    if (docSnapshot.exists()) {
+                        setUserRoles(docSnapshot.data().roles || []);
+                    }
+
+                } catch (error) {
+                    console.error('Error fetching user roles:', error.message);
+                }
+            } else {
+                // User is signed out
+                setUserRoles([]);
+            }
         });
 
         return () => unsubscribe();
     }, []);
 
-    return { user, loading };
+    // Use another useEffect to log userRoles after the state is updated
+    useEffect(() => {
+        console.log("user role: " + userRoles);
+    }, [userRoles]);
+
+    return { user, loading, userRoles };
 };
 
 // Helper function to update user roles in Firestore

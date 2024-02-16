@@ -7,7 +7,7 @@ import SignOutIcon from "../icons/logout-icon"; // Import the corresponding CSS 
 import {UserProfileLoggedInIcon} from "../icons/userProfileLoggedIn-icon";
 
 const Header: React.FC = () => {
-    const { loading, user } = useAuthState();
+    const { user, loading} = useAuthState();
     const [currentUser, setCurrentUser] = useState<any>(null);
     const navigate = useNavigate();
     useEffect(() => {
