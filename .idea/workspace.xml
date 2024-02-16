@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7823b07-a54e-42c8-b2fc-f7fae1afd498" name="Changes" comment="trying with gitignore">
-      <change afterPath="$PROJECT_DIR$/src/authentication/authenticadedRoute.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/logout-icon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/profile-svgrepo-com.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/userProfileLoggedIn-icon.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/authentication/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/authentication/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authentication/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/authentication/firebase.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MockDataGenerator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MockDataGenerator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/HealthEvents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/HealthEvents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RegisterComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/home.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,19 +51,20 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/alexa/Documents/GitHub/Nautical-Frank-Mole-React",
+    "last_opened_file_path": "C:/Users/alexa/Documents/GitHub/DevOpsFrontEnd/src/icons",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\alexa\\Documents\\GitHub\\Nautical-Frank-Mole-React\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\alexa\\Documents\\GitHub\\DevOpsFrontEnd\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexa\Documents\GitHub\DevOpsFrontEnd\src\icons" />
       <recent name="C:\Users\alexa\Documents\GitHub\Nautical-Frank-Mole-React" />
       <recent name="C:\Users\alexa\Documents\GitHub\Nautical-Frank-Mole-React\src\components" />
       <recent name="C:\Users\alexa\Documents\GitHub\Nautical-Frank-Mole-React\src\styles" />
@@ -110,6 +110,7 @@
       <workItem from="1707686300785" duration="6920000" />
       <workItem from="1707736668656" duration="4759000" />
       <workItem from="1707742342891" duration="4347000" />
+      <workItem from="1708080262319" duration="8669000" />
     </task>
     <task id="LOCAL-00001" summary="added bunch of good stuff">
       <option name="closed" value="true" />

@@ -1,12 +1,36 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/home.css';
 import logoutIcon from "../icons/logout-icon";
-import {signOutUser} from "../authentication/auth";
+import {auth, signOutUser, useAuthState} from "../authentication/auth";
 import SignOutIcon from "../icons/logout-icon"; // Import the corresponding CSS file
+import {UserProfileLoggedInIcon} from "../icons/userProfileLoggedIn-icon";
 
 const Header: React.FC = () => {
+    const { loading } = useAuthState();
+    const [currentUser, setCurrentUser] = useState<any>(null);
     const navigate = useNavigate();
+    useEffect(() => {
+        const fetchCurrentUser = async () => {
+            try {
+                // Fetch the current user once
+                const user = auth.currentUser;
+                setCurrentUser(user);
+                console.log('Current user:', user);
+
+                // Additional logic if needed
+            } catch (error) {
+                if(error instanceof Error)
+                console.error('Error fetching current user:', error.message);
+                // Handle error if needed
+            }
+        };
+
+        if (!loading) {
+            // Only fetch the current user if authentication state is loaded
+            fetchCurrentUser();
+        }
+    }, [loading]);
     const handleSignOut = async () => {
         try {
             await signOutUser();
@@ -33,11 +57,25 @@ const Header: React.FC = () => {
                         <Link to="/dashboard" className="buttonFlat">Dashboard</Link>
                     </nav>
                     <div className="home-buttons">
-                        <Link to="/login" className="home-login buttonFlat">Login</Link>
-                        <Link to="/register" className="buttonFilled">Register</Link>
-                        <button onClick={handleSignOut} className="buttonFlat" style={{marginLeft: '10px', height: '36px'}}>
-                            <SignOutIcon/>
-                        </button>
+                        {loading ? (
+                            // Render loading state if authentication state is still loading
+                            <p>Loading...</p>
+                        ) : currentUser ? (
+                            // Content to display when user is signed in
+                            <div className="logged-in-user">
+                                <UserProfileLoggedInIcon/>
+                                <p> {currentUser.email}</p>
+                                <button onClick={handleSignOut} className="buttonFlat" style={{marginLeft: '10px', height: '36px'}}>
+                                    <SignOutIcon/>
+                                </button>
+                            </div>
+                        ) : (
+                            <div>
+                                <Link to="/login" className="home-login buttonFlat">Login</Link>
+                                <Link to="/register" className="buttonFilled">Register</Link>
+                            </div>
+                        )}
+
                     </div>
                 </div>
                 <div data-thq="thq-burger-menu" className="home-burger-menu">

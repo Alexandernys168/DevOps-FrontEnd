@@ -3,14 +3,17 @@ import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     signOut,
+    Auth,
+
     updateProfile,
     onAuthStateChanged
     } from "firebase/auth";
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, doc, setDoc, getDoc } from 'firebase/firestore';
 import {useEffect, useState} from "react";
 import app from "./firebase";
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
+const firestore = getFirestore(app);
 
 const authenticateUser = async (email, password) => {
     try {
@@ -38,14 +41,18 @@ export { authenticateUser, signOutUser };
 
 
 
-export const registerUser = async (email, password) => {
+export const registerUser = async (email, password, defaultRole) => {
     try {
 
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
         const user = userCredential.user;
 
-        console.log("User is in auth: " + user);
+        console.log("user uid: " + user.uid);
+        // Set the default role for the new user
+        await updateRoles(user.uid, email, [defaultRole]);
+
+        console.log('User is registered with default role:', user);
 
         return user;
     } catch (error) {
@@ -82,4 +89,20 @@ export const useAuthState = () => {
     }, []);
 
     return { user, loading };
+};
+
+// Helper function to update user roles in Firestore
+export const updateRoles = async (userId, email, roles) => {
+    const userDocRef = doc(firestore, 'users', userId);
+
+    // Check if the document already exists
+    const docSnapshot = await getDoc(userDocRef);
+
+    if (docSnapshot.exists()) {
+        // If the document exists, update the roles
+        await setDoc(userDocRef, { email, roles }, { merge: true });
+    } else {
+        // If the document doesn't exist, create it with the roles
+        await setDoc(userDocRef, { email, roles });
+    }
 };

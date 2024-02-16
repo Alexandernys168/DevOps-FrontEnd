@@ -25,26 +25,7 @@ const RegisterComponent = () => {
     const handleConfirmPasswordChange = (event) => {
         setConfirmPassword(event.target.value);
     };
-/*
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        if (registrationInfo.password !== confirmPassword) {
-            alert("Passwords don't match");
-            return;
-        }
-        try {
-            const response = await axios.post('http://localhost:8080/länk/till/backend/här', {
-                body: JSON.stringify(registrationInfo),
 
-        });
-            if (response.status === 200) { //same as HttpStatus.OK
-                navigate('/');
-            }
-        } catch (error) {
-            console.error('Registration error:', error);
-        }
-    };
- */
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (registrationInfo.password !== confirmPassword) {
@@ -56,7 +37,8 @@ const RegisterComponent = () => {
             // Call the registerUser function with email and password
             const user = await registerUser(
                 registrationInfo.username,
-                registrationInfo.password
+                registrationInfo.password,
+                'Patient'
             );
             console.log("User is: " + user);
 

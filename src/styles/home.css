@@ -505,3 +505,12 @@
     margin-bottom: var(--dl-space-space-oneandhalfunits);
   }
 }
+
+.logged-in-user {
+  display: flex;
+  align-items: center;
+}
+
+.logged-in-user p {
+  margin: 0 10px;
+}
