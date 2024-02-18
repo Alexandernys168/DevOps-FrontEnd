@@ -15,16 +15,15 @@ import app from "./firebase";
 export const auth = getAuth(app);
 const firestore = getFirestore(app);
 
-const authenticateUser = async (email:string, password:string) => {
+const authenticateUser = async (email, password) => {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         console.log('User authenticated:', user.email);
         return user;
     } catch (error) {
-        if(error instanceof Error)
-            console.error('Authentication failed:', error.message);
-            throw error;
+        console.error('Authentication failed:', error.message);
+        throw error;
     }
 };
 
@@ -33,7 +32,6 @@ const signOutUser = async () => {
         await signOut(auth); // Sign out the current user
         console.log('User signed out');
     } catch (error) {
-        if(error instanceof Error)
         console.error('Sign out failed:', error.message);
         throw error;
     }
@@ -43,7 +41,7 @@ export { authenticateUser, signOutUser };
 
 
 
-export const registerUser = async (email:string, password:string, firstName:string,defaultRole:string) => {
+export const registerUser = async (email, password, firstName,defaultRole) => {
     try {
 
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -85,9 +83,9 @@ interface DbUser {
 
 export const useAuthState = () => {
     const [user, setUser] = useState(null);
-    const [dbUser, setDbUser] = useState<DbUser | null>(null);
+    const [dbUser, setDbUser] = useState({ firstName: '', email: '', roles: [] });
     const [loading, setLoading] = useState(true);
-    const [userRoles, setUserRoles] = useState<string[]>([]);
+    const [userRoles, setUserRoles] = useState([]);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -102,12 +100,11 @@ export const useAuthState = () => {
 
                     if (docSnapshot.exists()) {
                         setUserRoles(docSnapshot.data().roles || []);
-                        const userData = docSnapshot.data() as DbUser;
+                        const userData = docSnapshot.data();
                         setDbUser(userData);
                     }
 
                 } catch (error) {
-                    if(error instanceof Error)
                     console.error('Error fetching user roles:', error.message);
                 }
             } else {
@@ -129,7 +126,7 @@ export const useAuthState = () => {
 };
 
 // Helper function to update user roles in Firestore
-export const updateRolesAndName = async (userId:string, email:string, firstName:string,roles:string[]) => {
+export const updateRolesAndName = async (userId, email, firstName,roles) => {
     const userDocRef = doc(firestore, 'users', userId);
 
     // Check if the document already exists

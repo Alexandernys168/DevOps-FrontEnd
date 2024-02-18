@@ -1,0 +1,25 @@
+[debug] [2024-02-18T19:28:51.390Z] ----------------------------------------------------------------------
+[debug] [2024-02-18T19:28:51.399Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\alexa\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-02-18T19:28:51.401Z] CLI Version:   13.3.0
+[debug] [2024-02-18T19:28:51.401Z] Platform:      win32
+[debug] [2024-02-18T19:28:51.402Z] Node Version:  v21.6.0
+[debug] [2024-02-18T19:28:51.402Z] Time:          Sun Feb 18 2024 20:28:51 GMT+0100 (Central European Standard Time)
+[debug] [2024-02-18T19:28:51.403Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-02-18T19:28:51.593Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-02-18T19:28:51.594Z] > authorizing via signed-in user (fnydolf5901@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\alexa\Documents\GitHub\Nautical-Frank-Mole-React
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+

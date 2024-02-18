@@ -30,3 +30,21 @@ export const generateMockEvents = (count: number): Event[] => {
     }
     return events;
 };
+
+
+export const generateMockEventForPatient = (firstName: string): Event => ({
+
+    id: faker.string.uuid(),
+    patientId:  firstName,
+    result: faker.helpers.arrayElement(['positive', 'negative']),
+    registeredAt: faker.date.between({from: '2020-01-01T00:00:00.000Z', to: '2024-03-01T00:00:00.000Z'}).getTime()
+});
+
+// Function to generate an array of mock Event data
+export const generateMockEventsForPatient = (count: number, firstName: string): Event[] => {
+    const events = [];
+    for (let i = 0; i < count; i++) {
+        events.push(generateMockEventForPatient(firstName));
+    }
+    return events;
+};

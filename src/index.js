@@ -20,14 +20,49 @@ import './authentication/firebase'
 import {auth, setupAuthStateObserver, useAuthState} from './authentication/auth';
 import {AuthenticatedRoute} from "./authentication/authenticadedRoute";
 import LoadingView from "./views/loadingView";
+import DataGenerationPageForPatient from "./views/DataGenerationPageForPatient";
+import HealthEventsForPatient from "./views/HealthEventsForPatient";
+import DashboardForPatient from "./views/DashboardForPatient";
+import { getToken, getMessaging, onMessage } from "firebase/messaging";
+import { messaging } from "./authentication/firebase"
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+import Message from "./components/Message";
 
 
 // Set up the authentication state observer
 setupAuthStateObserver();
 
 const App: React.FC = () => {
-    const {loading, user, userRoles} = useAuthState();
+    const {loading, user, dbUser, userRoles} = useAuthState();
     const [currentUser, setCurrentUser] = useState(null);
+    const {REACT_APP_VAPID_KEY } = process.env;
+
+
+    onMessage(messaging, (payload) => {
+        toast(<Message notification={payload.notification} />);
+    });
+    async function requestPermission() {
+        //requesting permission using Notification API
+        const permission = await Notification.requestPermission();
+
+        if (permission === "granted") {
+            const token = await getToken(messaging, {
+                vapidKey: REACT_APP_VAPID_KEY,
+            });
+
+            //We can send token to server
+            console.log("Token generated : ", token);
+        } else if (permission === "denied") {
+            //notifications are blocked
+            alert("You denied for the notification");
+        }
+    }
+
+    useEffect(() => {
+        requestPermission();
+    }, []);
+
     useEffect(() => {
         const fetchCurrentUser = async () => {
             try {
@@ -49,7 +84,6 @@ const App: React.FC = () => {
                 // Handle error if needed
             }
         };
-
         if (!loading) {
             // Only fetch the current user if authentication state is loaded
             fetchCurrentUser();
@@ -57,36 +91,44 @@ const App: React.FC = () => {
     }, [loading, user]);
 
     return (
+
         <Router>
-            <div>
+            <>
+
                 <Header/>
+
                 <div style={{paddingTop: '96px'}}>
+                    <ToastContainer position="top-left"/>
                     <Routes>
                         <Route path="/" element={<Home/>}/>
                         {loading ? (
-                            <Route path="/loading" element={<LoadingView />} />
+                            <Route path="/loading" element={<LoadingView/>}/>
                         ) : (
                             <>
                                 {currentUser ? (
                                     <>
                                         {userRoles.includes('Admin') && (
                                             <>
-                                                <Route path="/dashboard" element={<Dashboard />} />
-                                                <Route path="/populate" element={<DataGenerationPage />} />
-                                                <Route path="/health-events" element={<HealthEvents />} />
+                                                <Route path="/dashboard" element={<Dashboard/>}/>
+                                                <Route path="/populate" element={<DataGenerationPage/>}/>
+                                                <Route path="/health-events" element={<HealthEvents/>}/>
                                             </>
                                         )}
                                         {userRoles.includes('Patient') && (
-                                            <Route path="/health-events" element={<HealthEvents />} />
+                                            <>
+                                                <Route path="/health-events" element={<HealthEventsForPatient/>}/>
+                                                <Route path="/populate" element={<DataGenerationPageForPatient/>}/>
+                                                <Route path="/dashboard" element={<DashboardForPatient/>}/>
+                                            </>
                                         )}
                                         {userRoles.includes('Doctor') && (
-                                            <Route path="/populate" element={<DataGenerationPage />} />
+                                            <Route path="/populate" element={<DataGenerationPage/>}/>
                                         )}
                                     </>
                                 ) : (
-                                    <Route path="/login" element={<LoginPageComponent />} />
+                                    <Route path="/login" element={<LoginPageComponent/>}/>
                                 )}
-                                <Route path="/" element={<Home />} />
+                                <Route path="/" element={<Home/>}/>
                             </>
                         )}
 
@@ -115,9 +157,12 @@ const App: React.FC = () => {
 
                         {/* Route for NotFound - matches any unknown route */}
                         <Route path="*" element={<NotFound/>}/>
+
                     </Routes>
+
                 </div>
-            </div>
+
+            </>
         </Router>
     );
 };

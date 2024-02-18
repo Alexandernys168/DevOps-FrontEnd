@@ -8,7 +8,8 @@ import {setUserInfoCookie} from "../services/CookieService";
 
 const RegisterComponent = () => {
     const [registrationInfo, setRegistrationInfo] = useState({
-        username: '',
+        firstName: '',
+        email: '',
         password: '',
     });
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -36,8 +37,9 @@ const RegisterComponent = () => {
         try {
             // Call the registerUser function with email and password
             const user = await registerUser(
-                registrationInfo.username,
+                registrationInfo.email,
                 registrationInfo.password,
+                registrationInfo.firstName,
                 'Patient'
             );
             console.log("User is: " + user);
@@ -45,8 +47,9 @@ const RegisterComponent = () => {
             // If registration is successful, set user info cookie and navigate
             if (user) {
                 console.log("User was registered");
-                setUserInfoCookie(registrationInfo.username, 'user'); // You may set an initial role for the user
+                setUserInfoCookie(registrationInfo.email, 'user'); // You may set an initial role for the user
                 navigate('/');
+                //TODO: When registered, log them in with firebase.
             }
         } catch (error) {
             console.error('Registration error:', error);
@@ -63,11 +66,23 @@ const RegisterComponent = () => {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
-                        Username:
+                        First name:
                         <input
                             type="text"
-                            name="username"
-                            value={registrationInfo.username}
+                            name="firstName"
+                            value={registrationInfo.firstName}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Email:
+                        <input
+                            type="text"
+                            name="email"
+                            value={registrationInfo.email}
                             onChange={handleInputChange}
                             required
                         />
