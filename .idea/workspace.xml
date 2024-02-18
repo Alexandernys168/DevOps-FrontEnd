@@ -55,6 +55,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
     "npm.start.executor": "Run",
     "ts.external.directory.path": "C:\\Users\\alexa\\Documents\\GitHub\\Nautical-Frank-Mole-React\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
@@ -75,7 +76,7 @@
       <recent name="C:\Users\alexa\Documents\GitHub\Nautical-Frank-Mole-React\src\styles" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -98,8 +99,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -122,7 +123,7 @@
       <workItem from="1708080262319" duration="9599000" />
       <workItem from="1708202459255" duration="233000" />
       <workItem from="1708202737261" duration="134000" />
-      <workItem from="1708202900478" duration="9367000" />
+      <workItem from="1708202900478" duration="9851000" />
     </task>
     <task id="LOCAL-00001" summary="added bunch of good stuff">
       <option name="closed" value="true" />
