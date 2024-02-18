@@ -5,24 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7823b07-a54e-42c8-b2fc-f7fae1afd498" name="Changes" comment="trying with gitignore">
-      <change afterPath="$PROJECT_DIR$/.env.local" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Message.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Message.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/public/firebase-messaging-sw.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authentication/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/authentication/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authentication/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/authentication/firebase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MockDataGenerator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MockDataGenerator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RegisterComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/DashboardForPatient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/DashboardForPatient.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/DataGenerationPageForPatient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/DataGenerationPageForPatient.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/HealthEventsForPatient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/HealthEventsForPatient.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/[event-details]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/[event-details]/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +122,7 @@
       <workItem from="1708080262319" duration="9599000" />
       <workItem from="1708202459255" duration="233000" />
       <workItem from="1708202737261" duration="134000" />
-      <workItem from="1708202900478" duration="8471000" />
+      <workItem from="1708202900478" duration="9367000" />
     </task>
     <task id="LOCAL-00001" summary="added bunch of good stuff">
       <option name="closed" value="true" />
