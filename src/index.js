@@ -6,7 +6,6 @@ import {
     Route,
 
 } from 'react-router-dom';
-
 import './styles/style.css';
 import Home from './views/home';
 import NotFound from './views/not-found';
