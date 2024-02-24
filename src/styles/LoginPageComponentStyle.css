@@ -20,6 +20,16 @@ body {
     align-items: center;
 }
 
+.form-field {
+    /*margin-bottom: 15px; /* Add spacing between form fields */
+}
+
+.form-field label {
+    display: inline-block;
+    width: 295px; /* Set a fixed width for labels */
+    /*margin-right: 5px; /* Add spacing between label and input */
+}
+
 .width-of-input{
 
     display: flex;

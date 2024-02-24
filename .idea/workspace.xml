@@ -5,20 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7823b07-a54e-42c8-b2fc-f7fae1afd498" name="Changes" comment="trying with gitignore">
-      <change afterPath="$PROJECT_DIR$/firestore-debug.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firestore.indexes.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firestore.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/.eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui-debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.firebaserc" beforeDir="false" afterPath="$PROJECT_DIR$/.firebaserc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/informationStyles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/UserListForAdmin.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/[users]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firebase-debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/firebase-debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firebase.json" beforeDir="false" afterPath="$PROJECT_DIR$/firebase.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authentication/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/authentication/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginPageComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginPageComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MockDataGenerator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MockDataGenerator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RegisterComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterComponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ApiService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ApiService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/LoginPageComponentStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/LoginPageComponentStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/DataGenerationPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/DataGenerationPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,10 +31,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
         <option value="JSX File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -142,7 +144,9 @@
       <workItem from="1708202737261" duration="134000" />
       <workItem from="1708202900478" duration="12133000" />
       <workItem from="1708288647565" duration="103000" />
-      <workItem from="1708288778564" duration="2355000" />
+      <workItem from="1708288778564" duration="3756000" />
+      <workItem from="1708697777004" duration="17023000" />
+      <workItem from="1708720894017" duration="10312000" />
     </task>
     <task id="LOCAL-00001" summary="added bunch of good stuff">
       <option name="closed" value="true" />

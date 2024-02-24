@@ -7,6 +7,15 @@ interface Event {
     registeredAt: number;
 }
 
+interface Patient {
+    id: string;
+    name: string;
+    dateOfBirth: Date;
+    email:string;
+    phoneNumber: string;
+
+}
+
 // Function to generate mock Event data
 export const generateMockEvent = (): Event => ({
 
@@ -48,3 +57,27 @@ export const generateMockEventsForPatient = (count: number, firstName: string): 
     }
     return events;
 };
+
+export const generateMockPatient = (): Patient => ({
+
+    id: faker.string.uuid(),
+    name:  faker.helpers.arrayElement([
+        'Emma', 'Liam', 'Olivia', 'Noah', 'Ava',
+        'Isabella', 'Sophia', 'Jackson', 'Lucas', 'Aiden',
+        'Mia', 'Ethan', 'Amelia', 'Harper', 'Evelyn',
+        'Abigail', 'Emily', 'Ella', 'Benjamin', 'Logan',
+        'Alexander', 'Grace', 'Avery', 'Lily', 'Zoe',
+        'Charlotte', 'Mila', 'Chloe', 'Luna']),
+    dateOfBirth: faker.date.birthdate(),
+    email: faker.internet.email(),
+    phoneNumber: faker.phone.number()
+
+});
+
+export const generateMockPatients= (count: number): Patient[] => {
+    const patients = [];
+    for (let i = 0; i< count; i++){
+        patients.push(generateMockPatient())
+    }
+    return patients;
+}

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { registerUser } from '../authentication/auth';
+import React, {useState} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
+import {registerUser} from '../authentication/auth';
 import axios from 'axios';
 
 import '../styles/LoginPageComponentStyle.css';
 import {setUserInfoCookie} from "../services/CookieService";
+import {message} from "antd";
 
 const RegisterComponent = () => {
     const [registrationInfo, setRegistrationInfo] = useState({
@@ -16,7 +17,7 @@ const RegisterComponent = () => {
     const navigate = useNavigate();
 
     const handleInputChange = (event) => {
-        const { name, value } = event.target;
+        const {name, value} = event.target;
         setRegistrationInfo({
             ...registrationInfo,
             [name]: value,
@@ -30,7 +31,7 @@ const RegisterComponent = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (registrationInfo.password !== confirmPassword) {
-            alert("Passwords don't match");
+            message.error("Passwords don't match");
             return;
         }
 
@@ -40,16 +41,15 @@ const RegisterComponent = () => {
                 registrationInfo.email,
                 registrationInfo.password,
                 registrationInfo.firstName,
-                'Patient'
+                'User'
             );
             console.log("User is: " + user);
 
             // If registration is successful, set user info cookie and navigate
             if (user) {
-                console.log("User was registered");
-                setUserInfoCookie(registrationInfo.email, 'user'); // You may set an initial role for the user
+                message.success('Registration successful!');
                 navigate('/');
-                //TODO: When registered, log them in with firebase.
+
             }
         } catch (error) {
             console.error('Registration error:', error);
@@ -63,9 +63,9 @@ const RegisterComponent = () => {
                 <button>Go back to the homepage</button>
             </Link>
             <h1 className="text-center">Register</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>
+            <form className="login-form" onSubmit={handleSubmit}>
+                <div className="form-field">
+                    <label style={{marginBottom: "0px"}}>
                         First name:
                         <input
                             type="text"
@@ -76,8 +76,8 @@ const RegisterComponent = () => {
                         />
                     </label>
                 </div>
-                <div>
-                    <label>
+                <div className="form-field">
+                    <label style={{marginBottom: "0px"}}>
                         Email:
                         <input
                             type="text"
@@ -88,8 +88,8 @@ const RegisterComponent = () => {
                         />
                     </label>
                 </div>
-                <div>
-                    <label>
+                <div className="form-field">
+                    <label style={{marginBottom: "0px"}}>
                         Password:
                         <input
                             type="password"
@@ -100,8 +100,8 @@ const RegisterComponent = () => {
                         />
                     </label>
                 </div>
-                <div>
-                    <label>
+                <div className="form-field">
+                    <label style={{marginBottom: "0px"}}>
                         Confirm Password:
                         <input
                             type="password"

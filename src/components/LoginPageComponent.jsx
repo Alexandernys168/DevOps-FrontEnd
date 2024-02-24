@@ -21,36 +21,6 @@ const LoginPageComponent = () => {
             [name]: value,
         });
     };
-/*
-    const handleSubmit = async (formSubmitEvent) => {
-        formSubmitEvent.preventDefault();
-
-        try {
-            const response = await axios.post('http://localhost:8080/api/user/login', {
-
-                body: JSON.stringify(createdUserObject),
-
-            });
-
-            if (response.status === 200) {                      //same as HttpStatus.OK
-                const resultFromBackend = response.data;
-
-                if (resultFromBackend) {
-                    //set cookie with username and role if we got a result
-                    setUserInfoCookie(createdUserObject.username, resultFromBackend.role);
-                    console.log(createdUserObject.username);
-                    console.log(resultFromBackend.role);
-                    navigate('/');
-                }
-            } else {
-                console.error('Login error');
-            }
-        } catch (error) {
-            console.error('Axios error:', error);
-        }
-    };
-
- */
 
     const handleSubmit = async (formSubmitEvent) => {
         formSubmitEvent.preventDefault();
@@ -64,7 +34,6 @@ const LoginPageComponent = () => {
 
             // If authentication is successful, set user info cookie and navigate
             if (user) {
-                setUserInfoCookie(createdUserObject.username, createdUserObject.role);
                 navigate('/');
             }
         } catch (error) {

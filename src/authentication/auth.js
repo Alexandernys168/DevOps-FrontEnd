@@ -4,11 +4,11 @@ import {
     createUserWithEmailAndPassword,
     signOut,
     Auth,
-
     updateProfile,
     onAuthStateChanged
     } from "firebase/auth";
-import { getFirestore, collection, addDoc, doc, setDoc, getDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, doc,
+    setDoc, getDoc, query, getDocs, where, updateDoc } from 'firebase/firestore';
 import {useEffect, useState} from "react";
 import app from "./firebase";
 
@@ -134,9 +134,99 @@ export const updateRolesAndName = async (userId, email, firstName,roles) => {
 
     if (docSnapshot.exists()) {
         // If the document exists, update the roles
-        await setDoc(userDocRef, { email, firstName, roles }, { merge: true });
+        await setDoc(userDocRef, { userId, email, firstName, roles }, { merge: true });
     } else {
         // If the document doesn't exist, create it with the roles
-        await setDoc(userDocRef, { email, firstName, roles });
+        await setDoc(userDocRef, { userId, email, firstName, roles });
     }
 };
+
+// Function to fetch user data based on specified roles or fetch all users
+export const getUsersByRole = async (role = null) => {
+    const users = [];
+    const notFound = [];
+
+    try {
+        // Fetch all users if no role is specified
+        if (!role) {
+            const allUsersQuery = query(collection(firestore, 'users'));
+            const allUsersSnapshot = await getDocs(allUsersQuery);
+
+            allUsersSnapshot.forEach((doc) => {
+                users.push(doc.data());
+            });
+        } else {
+            // Fetch users based on the specified role
+            const roleUsersQuery = query(collection(firestore, 'users'), where('roles', 'array-contains', role));
+            const roleUsersSnapshot = await getDocs(roleUsersQuery);
+
+            roleUsersSnapshot.forEach((doc) => {
+                users.push(doc.data());
+            });
+
+            if (roleUsersSnapshot.size === 0) {
+                notFound.push({ role });
+            }
+        }
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+    }
+
+    return { users, notFound };
+};
+
+// Update user roles in Firestore
+export const updateRolesInFirestore = async (userId: string, newRoles: string[]) => {
+    const userDocRef = doc(firestore, 'users', userId);
+
+    try {
+        // Check if the document already exists
+        const docSnapshot = await getDoc(userDocRef);
+
+        if (docSnapshot.exists()) {
+            // If the document exists, ensure roles array is defined and then update the roles
+            const currentRoles = docSnapshot.data()?.roles || [];
+            const updatedRoles = Array.from(new Set([...currentRoles, ...newRoles])); // Remove duplicates
+
+            await updateDoc(userDocRef, { roles: updatedRoles });
+        } else {
+            console.error(`User with ID ${userId} not found in Firestore.`);
+            // Handle the case where the user document does not exist
+        }
+    } catch (error) {
+        console.error('Error updating user roles in Firestore:', error.message);
+        // Handle the error as needed
+    }
+};
+
+export interface User {
+    userId: string;
+    email: string;
+    firstName: string| null;
+    roles: string[];
+}
+
+export const getUserByEmail = async (email: string) => {
+    try {
+        const userQuery = query(collection(firestore, 'users'), where('email', '==', email));
+        const userSnapshot = await getDocs(userQuery);
+
+        if (userSnapshot.size === 1) {
+            const user = userSnapshot.docs[0].data();
+            console.log("user: " + user);
+
+
+
+            return { user };
+        } else {
+            return { user: null };
+        }
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+        return { user: null};
+    }
+};
+
+
+
+

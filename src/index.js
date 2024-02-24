@@ -4,7 +4,6 @@ import {
     BrowserRouter as Router,
     Routes,
     Route,
-
 } from 'react-router-dom';
 import './styles/style.css';
 import Home from './views/home';
@@ -27,6 +26,9 @@ import { messaging } from "./authentication/firebase"
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import Message from "./components/Message";
+import UserListForAdmin from "./views/UserListForAdmin";
+import UserProfile from "./views/[users]/page";
+
 
 
 // Set up the authentication state observer
@@ -90,10 +92,8 @@ const App: React.FC = () => {
     }, [loading, user]);
 
     return (
-
         <Router>
             <>
-
                 <Header/>
 
                 <div style={{paddingTop: '96px'}}>
@@ -111,6 +111,8 @@ const App: React.FC = () => {
                                                 <Route path="/dashboard" element={<Dashboard/>}/>
                                                 <Route path="/populate" element={<DataGenerationPage/>}/>
                                                 <Route path="/health-events" element={<HealthEvents/>}/>
+                                                <Route path="/users" element={<UserListForAdmin/>}/>
+                                                <Route path="/users/:email" element={<UserProfile/>}/>
                                             </>
                                         )}
                                         {userRoles.includes('Patient') && (
@@ -130,37 +132,12 @@ const App: React.FC = () => {
                                 <Route path="/" element={<Home/>}/>
                             </>
                         )}
-
-
                         <Route path="/login" element={<LoginPageComponent/>}/>
                         <Route path="/register" element={<RegisterComponent/>}/>
-
-                        {/*
-                            <Route path="/dashboard" element={<AuthenticatedRoute/>}>
-                                <Route path="/dashboard" element={<Dashboard/>}/>
-                            </Route>
-                        */}
-
-                        {/*
-                            <Route path="/health-events" element={<AuthenticatedRoute/>}>
-                                <Route path="/health-events" element={<HealthEvents/>}/>
-                            </Route>
-                        */}
-
-
-                        {/*
-                        <Route path="/populate" element={<AuthenticatedRoute/>}>
-                            <Route path="/populate" element={<DataGenerationPage/>}/>
-                        </Route>
-                        */}
-
                         {/* Route for NotFound - matches any unknown route */}
                         <Route path="*" element={<NotFound/>}/>
-
                     </Routes>
-
                 </div>
-
             </>
         </Router>
     );

@@ -1,0 +1,154 @@
+.informationStyles {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.informationStyles h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #333;
+}
+
+.informationStyles p {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.informationStyles button {
+    background-color: #5cb85c;
+    border: none;
+    color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.informationStyles button:hover {
+    background-color: #449d44;
+}
+
+.informationStyles a {
+    color: #5cb85c;
+    text-decoration: none;
+}
+
+.informationStyles a:hover {
+    text-decoration: underline;
+}
+
+.informationStyles hr {
+    margin: 1rem 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.informationStyles ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.informationStyles li {
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-size: 1.2rem;
+}
+
+.informationStyles li:before {
+    content: "•";
+    display: inline-block;
+    margin-right: 0.5rem;
+    color: #5cb85c;
+    font-weight: bold;
+}
+
+.Header h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    --tw-bg-opacity: 1;
+    background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+    font-weight: 700;
+    padding: 1rem;
+    --tw-drop-shadow: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.Return button {
+    background-color: #5cb85c;
+    color: #fff;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.Return button:hover {
+    background-color: #449d44;
+}
+
+.TableForData {
+    border-collapse: collapse;
+    width: 100%;
+    padding-top: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 4rem;
+}
+
+.TableForData thead {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.TableForData th,
+.TableForData td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    /* Add border to each column */
+}
+
+.TableForData tbody tr:nth-child(even) {
+    background-color: #d1f2eb;
+}
+
+.TableForData tbody tr:hover {
+    background-color: #a9dfbf;
+}
+
+.TableForData td:last-child {
+    text-align: left;
+}
+
+.TableForData th:first-child,
+.TableForData td:first-child {
+    border-left: none;
+    border-left: 1px solid #ccc;
+}
+
+.TableForData th:last-child,
+.TableForData td:last-child {
+    border-right: none;
+    border-right: 1px solid #ccc;
+}
+
+.TableForData th,
+.TableForData td {
+    border-color: #27ae60;
+    color: #333;
+}

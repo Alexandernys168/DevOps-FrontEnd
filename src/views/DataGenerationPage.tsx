@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {generateMockEvents} from '../components/MockDataGenerator';
+import {generateMockEvents, generateMockPatients} from '../components/MockDataGenerator';
 import {sendEventToApi} from '../services/ApiService';
 import "../styles/LoginPageComponentStyle.css"
 
@@ -16,16 +16,29 @@ const DataGenerationPage: React.FC = () => {
             setFeedback('Please enter a valid positive integer for count.');
             return;
         }
-
-
-        // Assuming your API service method accepts an array of events
         try {
             const mockData = generateMockEvents(count);
             // Loop through mockData and send each event individually
             for (const event of mockData) {
                 await sendEventToApi(event);
             }
+            console.log('All events sent successfully');
+        } catch (error) {
+            console.error('Error sending events:', error);
+        }
+    };
 
+    const handleGenerateDataForPatients = async () => {
+        if (count <= 0 || !Number.isInteger(count)) {
+            setFeedback('Please enter a valid positive integer for count.');
+            return;
+        }
+        try {
+            const mockData = generateMockPatients(count);
+            // Loop through mockData and send each event individually
+            for (const patient of mockData) {
+                await sendEventToApi(patient);
+            }
             console.log('All events sent successfully');
         } catch (error) {
             console.error('Error sending events:', error);
@@ -36,12 +49,23 @@ const DataGenerationPage: React.FC = () => {
         <div className="inner-body-page">
             <h1>Data Generation Page</h1>
             <div className="width-of-input">
+                <h3>Lab Results Generator</h3>
                 <label>
                     Enter the number of events to generate:
                     <input type="number" value={count} onChange={handleCountChange}/>
                 </label>
 
                 <button onClick={handleGenerateData}>Generate Data</button>
+                {feedback && <p className="feedback-message">{feedback}</p>}
+            </div>
+            <div className="width-of-input">
+                <h3>Patients Generator</h3>
+                <label>
+                    Enter the number of patients to generate:
+                    <input type="number" value={count} onChange={handleCountChange}/>
+                </label>
+
+                <button onClick={handleGenerateDataForPatients}>Generate Data</button>
                 {feedback && <p className="feedback-message">{feedback}</p>}
             </div>
         </div>
