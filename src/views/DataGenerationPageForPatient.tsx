@@ -3,6 +3,7 @@ import {generateMockEvents, generateMockEventsForPatient} from '../components/Mo
 import {sendEventToApi} from '../services/ApiService';
 import "../styles/LoginPageComponentStyle.css"
 import {useAuthState} from "../authentication/auth";
+import {notification} from "antd";
 
 const DataGenerationPageForPatient: React.FC = () => {
     const [count, setCount] = useState<number>(0);
@@ -27,15 +28,23 @@ const DataGenerationPageForPatient: React.FC = () => {
 
         // Assuming your API service method accepts an array of events
         try {
-            const mockData = generateMockEventsForPatient(count, dbUser.firstName);
+            const mockData = generateMockEventsForPatient(count, dbUser.name);
             // Loop through mockData and send each event individually
             for (const event of mockData) {
                 await sendEventToApi(event);
             }
+            notification.success({
+                message: 'Lab Results added',
+                description: `You Lab Result was successfully created. You made ${count} lab results`,
+            });
 
             console.log('All events sent successfully');
         } catch (error) {
             console.error('Error sending events:', error);
+            notification.warning({
+                message: 'Lab Result Warning',
+                description: 'Lab Results could not be made.',
+            });
         }
     };
 

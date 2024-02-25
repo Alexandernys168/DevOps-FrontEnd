@@ -28,6 +28,9 @@ import { toast, ToastContainer } from "react-toastify";
 import Message from "./components/Message";
 import UserListForAdmin from "./views/UserListForAdmin";
 import UserProfile from "./views/[users]/page";
+import UserListForDoctor from "./views/UserListForDoctor";
+import UserProfileForDoctor from "./views/[users]/pageForDoctor";
+import DetailedLabResult from "./views/[health-events]/page";
 
 
 
@@ -111,6 +114,7 @@ const App: React.FC = () => {
                                                 <Route path="/dashboard" element={<Dashboard/>}/>
                                                 <Route path="/populate" element={<DataGenerationPage/>}/>
                                                 <Route path="/health-events" element={<HealthEvents/>}/>
+                                                <Route path="/health-events/:id" element={<DetailedLabResult/>}/>
                                                 <Route path="/users" element={<UserListForAdmin/>}/>
                                                 <Route path="/users/:email" element={<UserProfile/>}/>
                                             </>
@@ -123,7 +127,14 @@ const App: React.FC = () => {
                                             </>
                                         )}
                                         {userRoles.includes('Doctor') && (
-                                            <Route path="/populate" element={<DataGenerationPage/>}/>
+                                            <>
+                                                <Route path="/health-events" element={<HealthEvents/>}/>
+                                                <Route path="/health-events/:id" element={<DetailedLabResult/>}/>
+                                                <Route path="/users" element={<UserListForDoctor/>}/>
+                                                <Route path="/users/:email" element={<UserProfileForDoctor/>}/>
+                                            </>
+
+
                                         )}
                                     </>
                                 ) : (

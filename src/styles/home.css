@@ -209,6 +209,7 @@
   display: grid;
   grid-gap: var(--dl-space-space-oneandhalfunits);
   grid-template-columns: 1fr 1fr;
+  justify-items: center;
 }
 
 .home-container3 p {

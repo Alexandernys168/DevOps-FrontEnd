@@ -1,14 +1,22 @@
 import React, {useState} from 'react';
 import {generateMockEvents, generateMockPatients} from '../components/MockDataGenerator';
-import {sendEventToApi} from '../services/ApiService';
+import {sendEventToApi, sendPatientToApi} from '../services/ApiService';
 import "../styles/LoginPageComponentStyle.css"
+import {useAuthState} from "../authentication/auth";
 
 const DataGenerationPage: React.FC = () => {
     const [count, setCount] = useState<number>(0);
+    const [countForPatients, setCountForPatients] = useState<number>(0);
     const [feedback, setFeedback] = useState<string | null>(null);
+    const [feedbackForPatients, setFeedbackForPatients] = useState<String | null>(null);
+    const { userRoles} = useAuthState();
 
     const handleCountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCount(Number(event.target.value));
+    };
+
+    const handleCountChangeForPatients = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCountForPatients(Number(event.target.value));
     };
 
     const handleGenerateData = async () => {
@@ -29,15 +37,15 @@ const DataGenerationPage: React.FC = () => {
     };
 
     const handleGenerateDataForPatients = async () => {
-        if (count <= 0 || !Number.isInteger(count)) {
-            setFeedback('Please enter a valid positive integer for count.');
+        if (countForPatients <= 0 || !Number.isInteger(countForPatients)) {
+            setFeedbackForPatients('Please enter a valid positive integer for count.');
             return;
         }
         try {
-            const mockData = generateMockPatients(count);
+            const mockData = generateMockPatients(countForPatients);
             // Loop through mockData and send each event individually
             for (const patient of mockData) {
-                await sendEventToApi(patient);
+                await sendPatientToApi(patient);
             }
             console.log('All events sent successfully');
         } catch (error) {
@@ -62,11 +70,11 @@ const DataGenerationPage: React.FC = () => {
                 <h3>Patients Generator</h3>
                 <label>
                     Enter the number of patients to generate:
-                    <input type="number" value={count} onChange={handleCountChange}/>
+                    <input type="number" value={countForPatients} onChange={handleCountChangeForPatients}/>
                 </label>
 
                 <button onClick={handleGenerateDataForPatients}>Generate Data</button>
-                {feedback && <p className="feedback-message">{feedback}</p>}
+                {feedbackForPatients && <p className="feedback-message">{feedbackForPatients}</p>}
             </div>
         </div>
     );

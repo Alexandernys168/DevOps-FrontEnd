@@ -66,7 +66,7 @@ const RegisterComponent = () => {
             <form className="login-form" onSubmit={handleSubmit}>
                 <div className="form-field">
                     <label style={{marginBottom: "0px"}}>
-                        First name:
+                        Username:
                         <input
                             type="text"
                             name="firstName"

@@ -63,7 +63,7 @@ const EventList: React.FC = () => {
             sortable: true,
         },
         {
-            name: 'Name',
+            name: 'Username',
             selector: (row) => row.patientId,
             sortable: true,
         },
@@ -85,7 +85,7 @@ const EventList: React.FC = () => {
         {
             name: '',
             cell: (row) =>
-                <Link to={`/event-details/${row.id}`}>
+                <Link to={`/health-events/${row.id}`}>
                     <div>
                         <button style={{textDecoration: 'underline' }}>More info</button>
                     </div>

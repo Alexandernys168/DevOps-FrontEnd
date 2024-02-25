@@ -1,17 +1,22 @@
 import React, {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import "../../styles/home.css"
 import {
     getUserByEmail,
     getUsersByRole,
     updateRolesInFirestore,
-    updateUserWithPatientInfo
+    updateUserWithPatientInfo, useAuthState
 } from "../../authentication/auth";
 import {Card, Typography, Button, Select, notification} from 'antd';
 import axios from 'axios';
 
 const {Title, Paragraph} = Typography;
 const {Option} = Select;
+
+
+import '../../styles/DataTable.css'
+import '../../styles/expandable-events-row.css'
+import DataTable, {TableColumn} from "react-data-table-component";
 
 
 interface User {
@@ -29,13 +34,101 @@ interface Patient {
     phoneNumber: string;
 }
 
+interface Event {
+    id: string;
+    patientId: string;
+    result: string;
+    registeredAt: number;
 
-const UserProfile: React.FC = () => {
+}
+
+interface LabResult {
+    id: string;
+    patientId: string;
+    result: string;
+    registeredAt: number;
+}
+
+
+const UserProfileForDoctor: React.FC = () => {
     const {email} = useParams<{ email: string }>();
     const [user, setUser] = useState<any>(null)
     const [patients, setPatients] = useState<Patient[] | undefined>();
     const [patientConfirmed, setPatientConfirmed] = useState<Patient | undefined>();
     const [selectedPatient, setSelectedPatient] = useState<string | undefined>();
+    const [labResults, setLabResults] = useState<LabResult[]>([]);
+    const {dbUser, loading} = useAuthState();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+
+                // Check if dbUser is available
+                if (!dbUser || loading) {
+                    // Handle the case where dbUser is not available yet
+                    console.log('dbUser is not available yet');
+                    return;
+                }
+
+                const response = await fetch(`http://localhost:8081/labresult/byPatient/${user?.name}`);
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+
+                const rawData: LabResult[] = await response.json();
+
+                if (!rawData || !Array.isArray(rawData)) {
+                    throw new Error('Invalid response format');
+                }
+
+                setLabResults(rawData);
+            } catch (error) {
+                if (error instanceof Error)
+                    console.error('Error fetching data:', error.message);
+            }
+        };
+
+        fetchData();
+    }, [dbUser, loading]);
+
+    const columns: TableColumn<Event>[] = [
+        {
+            name: 'ID',
+            selector: (row) => row.id,
+            sortable: true,
+        },
+        {
+            name: 'Name',
+            selector: (row) => row.patientId,
+            sortable: true,
+        },
+        {
+            name: 'Result',
+            selector: (row) => row.result,
+            sortable: true,
+        },
+        {
+            name: 'Registered At',
+            selector: (row) => {
+                console.log('Timestamp:', row.registeredAt);
+                const date = new Date(row.registeredAt);
+                console.log('Date object:', date);
+                return `${date.toISOString().slice(0, 10)}`;
+            },
+            sortable: true,
+        },
+        {
+            name: '',
+            cell: (row) =>
+                <Link to={`/event-details/${row.id}`}>
+                    <div>
+                        <button style={{textDecoration: 'underline'}}>More info</button>
+                    </div>
+                </Link>
+
+        },
+    ];
 
 
     useEffect(() => {
@@ -116,12 +209,12 @@ const UserProfile: React.FC = () => {
                     });
                 } else {
 
-                    const selectedPatientObject =patients?.find(patient => patient.id === selectedPatient);
+                    const selectedPatientObject = patients?.find(patient => patient.id === selectedPatient);
                     if (selectedPatientObject) {
                         // Update Firestore with patient role and information
                         await updateRolesInFirestore(uid, ['Patient']);
                         await updateUserWithPatientInfo(uid, selectedPatientObject.id, selectedPatientObject.name,
-                            selectedPatientObject.dateOfBirth, selectedPatientObject.phoneNumber );
+                            selectedPatientObject.dateOfBirth, selectedPatientObject.phoneNumber);
                         await updateUser();
 
                         notification.success({
@@ -206,18 +299,18 @@ const UserProfile: React.FC = () => {
 
                             <div style={{marginTop: '20px'}}>
                                 {!user?.roles.includes('Patient') && !user?.roles.includes('Doctor') && (
-                                <Select
-                                    placeholder="Select a patient"
-                                    style={{width: 200, marginRight: '10px'}}
-                                    onChange={handlePatientSelection}
-                                    disabled={user?.roles.includes('Patient')}
-                                >
-                                    {Array.isArray(patients) && patients.map((patient) => (
-                                        <Option key={patient.id} value={patient.id}>
-                                            {patient.name}
-                                        </Option>
-                                    ))}
-                                </Select>
+                                    <Select
+                                        placeholder="Select a patient"
+                                        style={{width: 200, marginRight: '10px'}}
+                                        onChange={handlePatientSelection}
+                                        disabled={user?.roles.includes('Patient')}
+                                    >
+                                        {Array.isArray(patients) && patients.map((patient) => (
+                                            <Option key={patient.id} value={patient.id}>
+                                                {patient.name}
+                                            </Option>
+                                        ))}
+                                    </Select>
                                 )}
                                 {!user?.roles.includes('Patient') && !user?.roles.includes('Doctor') && (
                                     <Button type="primary" onClick={() => handleMakePatient(user?.userId)}>
@@ -225,7 +318,8 @@ const UserProfile: React.FC = () => {
                                     </Button>
                                 )}
                                 {!user?.roles.includes('Doctor') && !user?.roles.includes('Patient') && (
-                                    <Button type="primary" onClick={() => handleMakeDoctor(user?.userId)} style={{ marginLeft: '10px' }}>
+                                    <Button type="primary" onClick={() => handleMakeDoctor(user?.userId)}
+                                            style={{marginLeft: '10px'}}>
                                         Confirm Doctor Role
                                     </Button>
                                 )}
@@ -234,12 +328,32 @@ const UserProfile: React.FC = () => {
                     </div>
                 </div>
             </div>
+            <div className="home-faq">
+                <div className="faqContainer">
+                    <div className='table-container'>
+                    <div className="events-table-container" style={{paddingBottom:"2rem"}}>
+
+                        <DataTable
+                            className="inner-events-table-container"
+                            title="Events"
+                            columns={columns}
+                            data={labResults as any[]}
+                            pagination
+                            responsive
+                            highlightOnHover
+                            noHeader/>
+                    </div>
+                </div>
+                </div>
+
+
+            </div>
             {/* Add other sections as needed */}
         </div>
     );
 };
 
-export default UserProfile;
+export default UserProfileForDoctor;
 
 
 

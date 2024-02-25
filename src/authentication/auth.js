@@ -83,7 +83,7 @@ interface DbUser {
 
 export const useAuthState = () => {
     const [user, setUser] = useState(null);
-    const [dbUser, setDbUser] = useState({ firstName: '', email: '', roles: [] });
+    const [dbUser, setDbUser] = useState({ firstName: '', email: '', roles: [] , name: ""});
     const [loading, setLoading] = useState(true);
     const [userRoles, setUserRoles] = useState([]);
 
@@ -142,7 +142,7 @@ export const updateRolesAndName = async (userId, email, firstName,roles) => {
 };
 
 // Function to fetch user data based on specified roles or fetch all users
-export const getUsersByRole = async (role = null) => {
+export const getUsersByRole = async (role: null | "Patient" | "Doctor") => {
     const users = [];
     const notFound = [];
 
@@ -227,6 +227,20 @@ export const getUserByEmail = async (email: string) => {
     }
 };
 
+export const updateUserWithPatientInfo = async (userId, patientId, name, dateOfBirth, phoneNumber) => {
+    const userDocRef = doc(firestore, 'users', userId);
+
+    // Check if the document already exists
+    const docSnapshot = await getDoc(userDocRef);
+
+    if (docSnapshot.exists()) {
+        // If the document exists, update the roles
+        await setDoc(userDocRef, { userId, patientId, name, dateOfBirth, phoneNumber }, { merge: true });
+    } else {
+        // If the document doesn't exist, create it with the roles
+        await setDoc(userDocRef, { userId, patientId, name, dateOfBirth, phoneNumber });
+    }
+};
 
 
 

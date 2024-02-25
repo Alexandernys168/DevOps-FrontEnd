@@ -89,7 +89,7 @@ const Dashboard: React.FC = () => {
                 console.log('dbUser is not available yet');
                 return;
             }
-            const response = await fetch(`http://localhost:8081/labresult/${dbUser.firstName}`);
+            const response = await fetch(`http://localhost:8081/labresult/byPatient/${dbUser.firstName}`);
 
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
