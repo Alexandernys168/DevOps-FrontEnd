@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7823b07-a54e-42c8-b2fc-f7fae1afd498" name="Changes" comment="trying with gitignore">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/frontEnd-github-actions.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +133,7 @@
       <workItem from="1708288778564" duration="3756000" />
       <workItem from="1708697777004" duration="17023000" />
       <workItem from="1708720894017" duration="39003000" />
-      <workItem from="1708891395236" duration="6048000" />
+      <workItem from="1708891395236" duration="7667000" />
     </task>
     <task id="LOCAL-00001" summary="added bunch of good stuff">
       <option name="closed" value="true" />
