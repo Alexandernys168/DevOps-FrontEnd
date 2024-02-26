@@ -121,7 +121,7 @@ const UserProfileForDoctor: React.FC = () => {
         {
             name: '',
             cell: (row) =>
-                <Link to={`/event-details/${row.id}`}>
+                <Link to={`/health-events/${row.id}`}>
                     <div>
                         <button style={{textDecoration: 'underline'}}>More info</button>
                     </div>
