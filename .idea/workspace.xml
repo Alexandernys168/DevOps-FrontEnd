@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7823b07-a54e-42c8-b2fc-f7fae1afd498" name="Changes" comment="trying with gitignore">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/frontEnd-github-actions.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
