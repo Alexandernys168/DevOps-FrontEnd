@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7823b07-a54e-42c8-b2fc-f7fae1afd498" name="Changes" comment="trying with gitignore">
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/frontEnd-github-actions.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/frontEnd-github-actions.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +50,8 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;21.6.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.11.19&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.11.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.11.0&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/alexa/Documents/GitHub/DevOpsFrontEnd/src/icons&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
@@ -134,6 +134,8 @@
       <workItem from="1708697777004" duration="17023000" />
       <workItem from="1708720894017" duration="39003000" />
       <workItem from="1708891395236" duration="7667000" />
+      <workItem from="1709051969093" duration="27000" />
+      <workItem from="1709052340437" duration="2130000" />
     </task>
     <task id="LOCAL-00001" summary="added bunch of good stuff">
       <option name="closed" value="true" />
