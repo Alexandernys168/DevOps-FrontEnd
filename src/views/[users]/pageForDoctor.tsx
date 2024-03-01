@@ -70,7 +70,7 @@ const UserProfileForDoctor: React.FC = () => {
                     return;
                 }
 
-                const response = await fetch(`http://localhost:8081/labresult/byPatient/${user?.name}`);
+                const response = await fetch(`https://labresult.app.cloud.cbh.kth.se/labresult/byPatient/${user?.name}`);
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
@@ -147,7 +147,7 @@ const UserProfileForDoctor: React.FC = () => {
         const fetchPatients = async () => {
             try {
                 //const response = await axios.get('http://localhost:8083/patients/events');
-                const response = await fetch('http://localhost:8083/patients/events');
+                const response = await fetch('https://patientmanagement.app.cloud.cbh.kth.se/patients/events');
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }

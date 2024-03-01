@@ -1,8 +1,8 @@
 
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:8081/labresult/register'; // Change this URL to your actual API endpoint
-const apiUrlForPatients = 'http://localhost:8083/patients/register';
+const apiUrl = 'https://labresult.app.cloud.cbh.kth.se/labresult/register'; // Change this URL to your actual API endpoint
+const apiUrlForPatients = 'https://patientmanagement.app.cloud.cbh.kth.se/patients/register';
 
 export const sendEventToApi = async (event: any) => {
     try {

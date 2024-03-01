@@ -21,7 +21,7 @@ const EventList: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8081/labresult/allevents');
+                const response = await fetch('https://labresult.app.cloud.cbh.kth.se/labresult/allevents');
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
