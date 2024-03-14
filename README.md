@@ -48,5 +48,5 @@ In the folder Views, all files are straight forward, nothing too fancy.
 It is in the [index.js](src/index.js) file where the cool stuff is happening (roll-based restrictions). You will see that I am fetching the state of the signed-in user and giving access to different pages depending on the roles.
 
 ## Contributing
-Main contributor: Alexander Nyström
+Main contributor: Alexander Nyström 
 Contributor: Erik Görling
