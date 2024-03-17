@@ -30,7 +30,8 @@ Currently, all URLs are connected to the cbhCloud, but if wanted could be change
 Remember to also change the Firebase configuration to your own as the once that I am using are only available for specified web addresses. Otherwise the authentication process won't work.
 
 For the backend:
-I will hopefully share the link to the backend repository where you can look through to launch your own. Its easily run with docker.
+[Link to LabResult MicroService](https://github.com/sabahAlsaleh/LabResultService/blob/main/README.md)
+[Link to PatientManager MicroService](https://github.com/sabahAlsaleh/PatientManagement/blob/main/README.md)
 
 ## Usage
 
