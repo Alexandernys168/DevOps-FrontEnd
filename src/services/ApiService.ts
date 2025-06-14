@@ -1,8 +1,11 @@
 
 import axios from 'axios';
 
-const apiUrl = 'https://labresult.app.cloud.cbh.kth.se/labresult/register'; // Change this URL to your actual API endpoint
-const apiUrlForPatients = 'https://patientmanagement.app.cloud.cbh.kth.se/patients/register';
+const labResultBaseUrl = process.env.REACT_APP_LABRESULT_BASE_URL || '';
+const patientBaseUrl = process.env.REACT_APP_PATIENT_BASE_URL || '';
+
+const apiUrl = `${labResultBaseUrl}/labresult/register`;
+const apiUrlForPatients = `${patientBaseUrl}/patients/register`;
 
 export const sendEventToApi = async (event: any) => {
     try {
