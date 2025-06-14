@@ -37,7 +37,7 @@ const EventList: React.FC = () => {
                     return;
                 }
 
-                const response = await fetch(`https://labresult.app.cloud.cbh.kth.se/labresult/byPatient/${dbUser.name}`);
+                const response = await fetch(`${process.env.REACT_APP_LABRESULT_BASE_URL}/labresult/byPatient/${dbUser.name}`);
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');

@@ -30,7 +30,7 @@ const DetailedLabResult: React.FC = () => {
         const fetchLabResult = async () => {
             try {
                 //const response = await axios.get('http://localhost:8083/patients/events');
-                const response = await fetch(`https://labresult.app.cloud.cbh.kth.se/labresult/byLabId/${id}`);
+                const response = await fetch(`${process.env.REACT_APP_LABRESULT_BASE_URL}/labresult/byLabId/${id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }

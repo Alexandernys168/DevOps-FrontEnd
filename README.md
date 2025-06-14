@@ -25,9 +25,9 @@ This project presents the development of an innovative full-stack application fo
 * Dashboard which displays statistics of the medical records.
 
 ## Installation
-This repository can easily be run by "npm run" locally, however, as this repository is fetching data from a specified url, it is needed to change these.
-Currently, all URLs are connected to the cbhCloud, but if wanted could be changed to fetch locally. Just press "ctrl+shift+f" and replace all urls with your own.
-Remember to also change the Firebase configuration to your own as the once that I am using are only available for specified web addresses. Otherwise the authentication process won't work.
+This repository can easily be run by `npm run` locally. The application uses environment variables to configure the backend URLs.  By default the `.env.local` file points to
+local instances of the microservices (LabResultService on `http://localhost:8081` and PatientManagement on `http://localhost:8082`).
+Update these values if your services run elsewhere. Remember to also adjust the Firebase configuration to match your own project; otherwise the authentication process will not work.
 
 For the backend:
 
