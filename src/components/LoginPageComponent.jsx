@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { setUserInfoCookie } from '../services/CookieService';
-import axios from 'axios';
 import { authenticateUser } from '../authentication/auth';
 
 import '../styles/LoginPageComponentStyle.css'

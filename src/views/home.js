@@ -92,6 +92,14 @@ const Home = (props) => {
           </div>
         </div>
       </div>
+      <div className="home-login-info">
+        <p>Test Login Information</p>
+        <p>You can log in with one of the pre-created accounts:</p>
+        <p>admin@kth.se / Admin1234 → roles: user + admin</p>
+        <p>ethan@kth.se / Test1234 → roles: user + patient</p>
+        <p>doctor@kth.se / Test1234 → roles: user + doctor</p>
+        <p>Or create your own account using the register page (you will receive basic user credentials).</p>
+      </div>
       <div className="home-features">
         <div className="featuresContainer">
           <div className="home-features1">
