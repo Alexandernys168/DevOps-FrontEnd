@@ -16,6 +16,7 @@ import { Bar } from 'react-chartjs-2';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { countOccurrencesResult } from '../utils/utils';
 import {useAuthState} from "../authentication/auth";
+import {getLabResultsByPatient} from '../services/SessionApi';
 
 interface CounterProps {
     label: string;
@@ -89,13 +90,7 @@ const Dashboard: React.FC = () => {
                 console.log('dbUser is not available yet');
                 return;
             }
-            const response = await fetch(`${process.env.REACT_APP_LABRESULT_BASE_URL}/labresult/byPatient/${dbUser.firstName}`);
-
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
-
-            const rawData: LabResult[] = await response.json();
+            const rawData: LabResult[] = await getLabResultsByPatient(dbUser.firstName);
 
             if (!rawData || !Array.isArray(rawData)) {
                 throw new Error('Invalid response format');

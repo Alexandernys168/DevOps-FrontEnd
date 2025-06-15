@@ -8,7 +8,7 @@ import {
     updateUserWithPatientInfo
 } from "../../authentication/auth";
 import {Card, Typography, Button, Select, notification} from 'antd';
-import axios from 'axios';
+import {getAllPatients} from '../../services/SessionApi';
 
 const {Title, Paragraph} = Typography;
 const {Option} = Select;
@@ -53,13 +53,7 @@ const UserProfile: React.FC = () => {
         // Fetch patients from your API and update the state
         const fetchPatients = async () => {
             try {
-                //const response = await axios.get('http://localhost:8083/patients/events');
-                const response = await fetch(`${process.env.REACT_APP_PATIENT_BASE_URL}/patients/events`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch data');
-                }
-
-                const rawData: string[] = await response.json();
+                const rawData: string[] = await getAllPatients();
 
                 if (!rawData || !Array.isArray(rawData)) {
                     throw new Error('Invalid response format');

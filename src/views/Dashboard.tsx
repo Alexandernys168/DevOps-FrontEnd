@@ -15,6 +15,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { countOccurrencesResult } from '../utils/utils';
+import {getAllLabResults} from '../services/SessionApi';
 
 interface CounterProps {
     label: string;
@@ -72,13 +73,7 @@ const Dashboard: React.FC = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_LABRESULT_BASE_URL}/labresult/allevents`);
-
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
-
-            const rawData: string[] = await response.json();
+            const rawData: string[] = await getAllLabResults();
 
             if (!rawData || !Array.isArray(rawData)) {
                 throw new Error('Invalid response format');
