@@ -547,3 +547,11 @@
   justify-content: flex-start;
 
 }
+
+.home-login-info {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+}
