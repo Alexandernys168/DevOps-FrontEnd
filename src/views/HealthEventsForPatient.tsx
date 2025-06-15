@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import '../styles/DataTable.css'
 import '../styles/expandable-events-row.css'
 import {useAuthState} from "../authentication/auth";
+import {getLabResultsByPatient} from '../services/SessionApi';
 
 
 interface Event {
@@ -37,13 +38,7 @@ const EventList: React.FC = () => {
                     return;
                 }
 
-                const response = await fetch(`${process.env.REACT_APP_LABRESULT_BASE_URL}/labresult/byPatient/${dbUser.name}`);
-
-                if (!response.ok) {
-                    throw new Error('Failed to fetch data');
-                }
-
-                const rawData: LabResult[] = await response.json();
+                const rawData: LabResult[] = await getLabResultsByPatient(dbUser.name);
 
                 if (!rawData || !Array.isArray(rawData)) {
                     throw new Error('Invalid response format');

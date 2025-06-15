@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 import "../../styles/home.css"
 
 import {Card, Typography, Button, Select, notification} from 'antd';
-import axios from 'axios';
+import {getLabResultById} from '../../services/SessionApi';
 
 const {Title, Paragraph} = Typography;
 const {Option} = Select;
@@ -29,21 +29,13 @@ const DetailedLabResult: React.FC = () => {
         // Fetch patients from your API and update the state
         const fetchLabResult = async () => {
             try {
-                //const response = await axios.get('http://localhost:8083/patients/events');
-                const response = await fetch(`${process.env.REACT_APP_LABRESULT_BASE_URL}/labresult/byLabId/${id}`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch data');
-                }
-
-                const rawData: Event[] = await response.json();
+                const rawData: Event[] = await getLabResultById(id as string);
 
                 if (!rawData || !Array.isArray(rawData) || rawData.length === 0) {
                     throw new Error('Invalid response format');
                 }
 
                 const parsedData: Event = rawData[0];
-                console.log(parsedData);
-
                 setEvent(parsedData);
             } catch (error) {
                 console.error('Error fetching patients:', error);
